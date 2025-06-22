@@ -1,5 +1,6 @@
-
+// File: pages/index.js
 import Head from 'next/head';
+import Image from 'next/image';
 
 export default function Home() {
   return (
@@ -10,9 +11,12 @@ export default function Home() {
       </Head>
 
       <header className="bg-blue-900 text-white py-12 text-center shadow-md">
-        <h1 className="text-5xl font-extrabold">SwiftStamp Notary Services</h1>
-        <p className="mt-4 text-xl font-light">Sealing Trust, One Signature at a Time</p>
-        <a href="#contact" className="mt-6 inline-block bg-yellow-400 text-blue-900 font-semibold px-8 py-3 rounded hover:bg-yellow-300">Book Now</a>
+        <div className="flex flex-col items-center">
+          <Image src="/logo.png" alt="SwiftStamp Logo" width={120} height={120} />
+          <h1 className="text-5xl font-extrabold mt-4">SwiftStamp Notary Services</h1>
+          <p className="mt-2 text-xl font-light">Sealing Trust, One Signature at a Time</p>
+          <a href="#contact" className="mt-6 inline-block bg-yellow-400 text-blue-900 font-semibold px-8 py-3 rounded hover:bg-yellow-300">Book Now</a>
+        </div>
       </header>
 
       <section className="max-w-6xl mx-auto py-16 px-6">
@@ -23,6 +27,30 @@ export default function Home() {
               <p className="text-lg font-medium text-center text-blue-900">{service}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="bg-yellow-50 py-16 px-6">
+        <h2 className="text-3xl font-bold text-center text-blue-900 mb-10">Pricing</h2>
+        <div className="max-w-4xl mx-auto grid gap-6 sm:grid-cols-2">
+          {[{service: 'In-Person Notarization', price: '$45/document'}, {service: 'Remote Notarization', price: '$40/document'}, {service: 'Certified Copies', price: '$25/copy'}, {service: 'Travel Fee (GTA)', price: '$15–$35'}, {service: 'After-Hours Surcharge', price: '+$10'}, {service: 'Weekend Rate', price: 'No extra fee'}].map((item, index) => (
+            <div key={index} className="border border-blue-200 p-5 rounded-lg bg-white shadow">
+              <h3 className="text-lg font-semibold text-blue-900">{item.service}</h3>
+              <p className="text-gray-700 mt-1">{item.price}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-blue-50 py-16 px-6">
+        <h2 className="text-3xl font-bold text-center text-blue-900 mb-10">What Our Clients Say</h2>
+        <div className="max-w-3xl mx-auto grid gap-6">
+          {["SwiftStamp was a lifesaver! Fast and professional service after hours.", "Kareena made the process super easy and stress-free.", "I loved the remote option — so convenient from my home.", "Super responsive, efficient, and trustworthy notary services!"]
+            .map((testimonial, index) => (
+              <blockquote key={index} className="bg-white border-l-4 border-yellow-400 p-4 shadow rounded">
+                <p className="italic">“{testimonial}”</p>
+              </blockquote>
+            ))}
         </div>
       </section>
 
@@ -45,3 +73,4 @@ export default function Home() {
     </div>
   );
 }
+
